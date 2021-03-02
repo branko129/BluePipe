@@ -9,8 +9,10 @@ node {
 
     stage('Build image') {
   
-       app = docker.build("branko129/test")
-    }
+       docker.withServer(tcp://192.168.9.50:4243){
+            app = docker.build("branko129/test")
+        }
+    }                     
 
     stage('Test image') {
   
